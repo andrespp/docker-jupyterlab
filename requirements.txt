@@ -1,1 +1,7 @@
 jupyterlab==0.35.3
+numpy
+pandas
+matplotlib
+seaborn
+fastparquet
+psycopg2
