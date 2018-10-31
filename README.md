@@ -11,10 +11,12 @@ DockerFile for [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/).
 
 ```bash
 $ docker container run --rm -p 8888:8888 andrespp/jupyterlab
+$ docker run --rm -v $(pwd):/opt/app/data -p 8888:8888 andrespp/jupyterlab
 ```
 
 ## Docker compose
 
+* `docker-compose.yaml`
 ```yaml
 version: '3.1'
 
@@ -26,6 +28,8 @@ services:
     volumes:
       - ./data:/opt/app/data
 ```
+
+* Bring compose up
 
 ```bash
 $ docker-compose up
