@@ -21,6 +21,8 @@ This image also includes the 3rd-party extensions listed below:
 
 * [jupyterlab-toc](https://github.com/jupyterlab/jupyterlab-toc):
 a Table of Contents extension for JupyterLab
+* [jupyterlab-github](https://github.com/jupyterlab/jupyterlab-github):
+a JupyterLab extension for accessing GitHub repositories.
 
 # Quick start
 

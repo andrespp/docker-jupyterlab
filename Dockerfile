@@ -9,7 +9,8 @@ COPY ./requirements.txt ./
 
 RUN conda install -c conda-forge --yes --file requirements.txt
 
-RUN jupyter labextension install @jupyterlab/toc
+RUN jupyter labextension install @jupyterlab/toc && \
+    jupyter labextension install @jupyterlab/github
 
 WORKDIR /opt/app/data
 
