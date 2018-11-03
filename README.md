@@ -67,6 +67,14 @@ Then you'll be able to run JupyterLab in the current directory simply by calling
 $ jlab
 ```
 
+# Environment Variables
+
+This image uses several environment variables in order to control its behavior, and some of them may be required:
+
+| Environment variable | Default value | Note |
+| -------------------- | ------------- | -----|
+| KEYMAP | `default` | Available options are: `default`, `sublime`, `vim` and `emacs` |
+
 # Issues
 
 If you have any problems with or questions about this image, please contact me through a [GitHub issue](https://github.com/andrespp/docker-jupyterlab/issues).
