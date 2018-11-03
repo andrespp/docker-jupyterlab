@@ -1,0 +1,4 @@
+#!/bin/bash
+#docker run --rm -u $UID:`id -g` -v "$PWD":/opt/app/data -p 8888:8888 andrespp/jupyterlab
+docker run --name jlab --rm -v "$PWD":/opt/app/data -p 8888:8888 \
+		andrespp/jupyterlab

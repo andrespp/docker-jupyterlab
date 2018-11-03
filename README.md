@@ -5,6 +5,8 @@ Docker JupyterLab
 
 DockerFile for [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/).
 
+# Resources
+
 ## Python libraries
 
 This image uses [miniconda3](https://hub.docker.com/r/continuumio/miniconda3/) as the default Python distribution, and adds a few packages to it, most of which used in Data Science projects, like: numpy, pandas, matplotlib, seaborn and more.
@@ -47,6 +49,22 @@ services:
 
 ```bash
 $ docker-compose up
+```
+
+# Install
+
+In order to run the container as if the application was installed locally, download the `jlab` script to a directory in you $PATH, for example:
+
+```bash
+$ sudo curl -fsSL https://raw.githubusercontent.com/andrespp/docker-jupyterlab/master/jlab \
+       -o /usr/local/bin/jlab
+$ sudo chmod +x /usr/local/bin/jlab
+```
+
+Then you'll be able to run JupyterLab in the current directory simply by calling `jlab`:
+
+```bash
+$ jlab
 ```
 
 # Issues
