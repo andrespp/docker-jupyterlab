@@ -1,4 +1,48 @@
 #!/bin/bash
-#docker run --rm -u $UID:`id -g` -v "$PWD":/opt/app/data -p 8888:8888 andrespp/jupyterlab
-docker run --name jlab --rm -v "$PWD":/opt/app/data -p 8888:8888 \
-		andrespp/jupyterlab
+#set -x
+
+CONTAINER_NAME=jlab
+
+is_running(){
+	#  Returns (echo) CONTAINER ID if container exists and is running, and
+        # zero length string otherwise
+	id=$(docker ps -q -f status=running -f name=$CONTAINER_NAME)
+	echo $id
+}
+
+open_browser() {
+	for i in `seq 10` ; do
+		CONTAINER_ID=$(is_running)
+		if [ ! -z $CONTAINER_ID ] ; then
+			URL=$(docker exec $CONTAINER_NAME ./entrypoint.sh geturl)
+			if [ ! -z $URL ] ; then
+				echo entrou. $URL
+				echo python -m webbrowser -t $URL
+				python -m webbrowser -t $URL
+				exit 0
+			else
+				echo nao entrou. $URL
+				continue
+			fi
+		else
+			sleep 1
+		fi
+	done
+}
+
+## main()
+
+# Check container status
+CONTAINER_ID=$(is_running)
+
+if [ -z $CONTAINER_ID ] ; then
+	# Container not running, start it
+	docker run --name jlab --rm -v "$PWD":/opt/app/data -p 8888:8888 -d \
+		-e KEYMAP=vim andrespp/jupyterlab
+	# Open JupyterLab
+	open_browser
+else
+	echo JupyterLab already running \($CONTAINER_ID\). $URL
+	URL=$(docker exec jlab ./entrypoint.sh geturl)
+	python -m webbrowser -t $URL
+fi

@@ -36,6 +36,11 @@ CodeMirror_settings() {
 	echo "Keymap set to: $KEYMAP"
 }
 
+get_url() {
+	echo `jupyter notebook list | grep 'http' | cut -d' ' -f1 | \
+		sed --expression 's/0.0.0.0/localhost/g'`
+}
+
 jupyterlab() {
 	echo Applying custom settings. $@
 	user_settings
@@ -53,12 +58,16 @@ ETL Container
 Options:
   help		        Print this help
   jupyterlab		Start Jupyterlab
+  geturl		Print URL of running notebook
 "
 }
 
 case "$1" in
     help)
         print_usage
+        ;;
+    geturl)
+       get_url
         ;;
     jupyterlab)
 	shift 1
