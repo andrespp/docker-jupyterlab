@@ -14,14 +14,12 @@ open_browser() {
 	for i in `seq 10` ; do
 		CONTAINER_ID=$(is_running)
 		if [ ! -z $CONTAINER_ID ] ; then
-			URL=$(docker exec $CONTAINER_NAME ./entrypoint.sh geturl)
+			URL=$(docker exec $CONTAINER_NAME /entrypoint.sh geturl)
 			if [ ! -z $URL ] ; then
-				echo entrou. $URL
 				echo python -m webbrowser -t $URL
 				python -m webbrowser -t $URL
 				exit 0
 			else
-				echo nao entrou. $URL
 				continue
 			fi
 		else
@@ -43,6 +41,6 @@ if [ -z $CONTAINER_ID ] ; then
 	open_browser
 else
 	echo JupyterLab already running \($CONTAINER_ID\). $URL
-	URL=$(docker exec jlab ./entrypoint.sh geturl)
+	URL=$(docker exec jlab /entrypoint.sh geturl)
 	python -m webbrowser -t $URL
 fi
