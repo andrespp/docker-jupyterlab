@@ -11,7 +11,7 @@ DockerFile for [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/).
 
 This image uses [miniconda3](https://hub.docker.com/r/continuumio/miniconda3/) as the default Python distribution, and adds a few packages to it, most of which used in Data Science projects, like: numpy, pandas, matplotlib, seaborn and more.
 
-The additional packages installed on this image are listed on the file ([`requirements.txt`](requirements.txt))
+The additional packages installed on this image are listed on the file ([`requirements.txt`](https://github.com/andrespp/docker-jupyterlab/blob/master/requirements.txt))
 
 ## JupyterLab Extensions
 

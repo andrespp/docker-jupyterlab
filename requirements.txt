@@ -1,4 +1,4 @@
-jupyterlab==0.35.3
+jupyterlab==0.35.4
 nodejs
 numpy
 pandas
