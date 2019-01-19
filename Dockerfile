@@ -11,7 +11,8 @@ RUN conda install -c conda-forge --yes --file requirements.txt
 
 RUN jupyter labextension install @jupyterlab/toc && \
     jupyter labextension install @jupyterlab/github && \
-    jupyter labextension install jupyterlab-drawio
+    jupyter labextension install jupyterlab-drawio && \
+    jupyter labextension install @jupyterlab/plotly-extension
 
 WORKDIR /opt/app/data
 

@@ -45,7 +45,9 @@ jupyterlab() {
 	echo Applying custom settings. $@
 	user_settings
 	echo Starting jupyterlab. $@
-  	jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --notebook-dir=/opt/app/data --allow-root
+	jupyter lab --ip=0.0.0.0 --port=8888 --no-browser \
+		--notebook-dir=/opt/app/data --allow-root \
+		--NotebookApp.iopub_data_rate_limit=10000000
 }
 
 print_usage() {
