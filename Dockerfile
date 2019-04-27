@@ -25,6 +25,9 @@ RUN rm /etc/localtime && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=en_US.UTF-8 LC_MONETARY=pt_BR.UTF-8
 
+# Aditional Packages
+RUN apt-get install -y  firebird-dev
+
 WORKDIR /opt/app/data
 
 COPY ./entrypoint.sh /

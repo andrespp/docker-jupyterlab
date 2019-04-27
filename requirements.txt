@@ -7,3 +7,5 @@ seaborn
 fastparquet
 psycopg2
 plotly
+scikit-learn
+fdb
