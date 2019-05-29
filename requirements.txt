@@ -10,4 +10,4 @@ plotly
 scikit-learn
 fdb
 xlrd
-xlwd
+xlwt
