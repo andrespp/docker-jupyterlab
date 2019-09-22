@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3
+FROM continuumio/miniconda3:4.7.10
 MAINTAINER Andre Pereira andrespp@gmail.com
 
 RUN apt-get update && \
