@@ -18,6 +18,9 @@ RUN jupyter labextension install @jupyterlab/toc && \
     jupyter labextension install jupyterlab-drawio && \
     jupyter labextension install @jupyterlab/plotly-extension
 
+RUN conda install -c conda-forge jupyterlab jupyterlab-git && \
+	jupyter lab build
+
 # Configure timezone and locale
 RUN rm /etc/localtime && \
     ln -s /usr/share/zoneinfo/America/Belem /etc/localtime && \
