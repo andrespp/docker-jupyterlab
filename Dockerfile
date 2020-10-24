@@ -1,18 +1,19 @@
-FROM continuumio/miniconda3:4.7.10
+FROM continuumio/miniconda3:4.8.2
 MAINTAINER Andre Pereira andrespp@gmail.com
 
 RUN apt-get update && \
-    apt-get install -y vim build-essential && \
+    apt-get install -y vim build-essential libpq-dev python3-dev \
+			unixodbc-dev python3-pyodbc nodejs npm && \
     apt-get clean && rm -rf /var/lib/apt/list
 
 COPY ./requirements.txt ./
 
-RUN conda install -c conda-forge --yes --file requirements.txt
+RUN pip install -r requirements.txt
 
 RUN jupyter labextension install @jupyterlab/toc && \
     jupyter labextension install @jupyterlab/github && \
-    jupyter labextension install jupyterlab-drawio && \
-    jupyter labextension install @jupyterlab/plotly-extension
+    jupyter labextension install jupyterlab-drawio
+#    jupyter labextension install @jupyterlab/plotly-extension
 
 # Configure timezone and locale
 RUN rm /etc/localtime && \

@@ -2,6 +2,7 @@
 #set -x
 
 CONTAINER_NAME=jlab
+DOCKER_IMAGE=andrespp/jupyterlab
 
 is_running(){
 	#  Returns (echo) CONTAINER ID if container exists and is running, and
@@ -36,7 +37,7 @@ CONTAINER_ID=$(is_running)
 if [ -z $CONTAINER_ID ] ; then
 	# Container not running, start it
 	docker run --name jlab --rm -v "$PWD":/opt/app/data -p 8888:8888 -d \
-		-e KEYMAP=vim andrespp/jupyterlab
+		-e KEYMAP=vim $DOCKER_IMAGE
 	# Open JupyterLab
 	open_browser
 else

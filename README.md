@@ -20,7 +20,7 @@ This image also includes the 3rd-party extensions listed below:
 * [jupyterlab-toc](https://github.com/jupyterlab/jupyterlab-toc): a Table of Contents extension for JupyterLab
 * [jupyterlab-github](https://github.com/jupyterlab/jupyterlab-github): a JupyterLab extension for accessing GitHub repositories.
 * [jupyterlab-drawio](https://github.com/QuantStack/jupyterlab-drawio): a JupyterLab extension for standalone integration of drawio / mxgraph into jupyterlab.
-* [jupyterlab-plotly-extension](https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension): A JupyterLab extension for rendering Plotly charts.
+* ~~[jupyterlab-plotly-extension](https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension): A JupyterLab extension for rendering Plotly charts.~~ Currently Unavailable for Jupyterlab 2.2.9
 
 # Quick start
 
