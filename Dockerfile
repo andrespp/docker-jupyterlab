@@ -8,12 +8,15 @@ RUN apt-get update && \
 
 COPY ./requirements.txt ./
 
+# Aditional Packages
+RUN apt-get install -y  firebird-dev
+
 RUN pip install -r requirements.txt
 
 RUN jupyter labextension install @jupyterlab/toc && \
     jupyter labextension install @jupyterlab/github && \
-    jupyter labextension install jupyterlab-drawio
-#    jupyter labextension install @jupyterlab/plotly-extension
+    jupyter labextension install jupyterlab-drawio && \
+    jupyter labextension install @jupyterlab/plotly-extension
 
 # Configure timezone and locale
 RUN rm /etc/localtime && \
@@ -25,9 +28,6 @@ RUN rm /etc/localtime && \
     echo 'LANG="en_US.UTF-8"'>/etc/default/locale && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=en_US.UTF-8 LC_MONETARY=pt_BR.UTF-8
-
-# Aditional Packages
-RUN apt-get install -y  firebird-dev
 
 WORKDIR /opt/app/data
 

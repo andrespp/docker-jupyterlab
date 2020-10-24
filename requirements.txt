@@ -1,4 +1,4 @@
-jupyterlab==2.2.9
+jupyterlab==1.2.0
 uetl==0.0.6
 dask
 fastparquet
