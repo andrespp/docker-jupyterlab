@@ -4,3 +4,4 @@ data/
 .ipython/
 .jupyter/
 .local/
+dask-worker-space/
