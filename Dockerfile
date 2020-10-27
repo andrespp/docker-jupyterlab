@@ -4,7 +4,7 @@ MAINTAINER Andre Pereira andrespp@gmail.com
 # Basic Packages
 RUN apt-get update && \
     apt-get install -y vim build-essential libpq-dev python3-dev \
-			unixodbc-dev python3-pyodbc nodejs npm
+			unixodbc-dev python3-pyodbc nodejs npm graphviz
 
 # Timezone and locale settings
 RUN rm /etc/localtime && \

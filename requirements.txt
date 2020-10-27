@@ -3,6 +3,7 @@ uetl==0.0.6
 dask[complete]
 fastparquet
 fdb
+graphviz
 matplotlib
 nodejs
 numpy
