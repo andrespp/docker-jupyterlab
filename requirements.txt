@@ -1,8 +1,9 @@
 jupyterlab==1.2.0
 uetl==0.0.6
-dask
+dask[complete]
 fastparquet
 fdb
+graphviz
 matplotlib
 nodejs
 numpy
