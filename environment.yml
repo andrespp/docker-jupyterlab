@@ -1,0 +1,31 @@
+name: jlab
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - jupyterlab==4.0.7
+  - dash-core-components
+  - dash-html-components
+  - dash==2.13.0
+  - dask[complete]
+  - fastparquet
+  - graphviz
+  - matplotlib
+  - numpy
+  - pandas
+  - pip
+  - plotly
+  - psycopg2
+  - pytest
+  - scikit-learn
+  - seaborn
+  - xlrd
+  - xlsxwriter
+  - xlwt
+  - pip:
+    - dash-daq
+    - dash-auth
+    - dash-bootstrap-components

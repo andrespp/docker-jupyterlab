@@ -1,36 +1,36 @@
-FROM continuumio/miniconda3:4.8.2
-MAINTAINER Andre Pereira andrespp@gmail.com
+FROM continuumio/miniconda3:23.5.2-0
 
-# Basic Packages
-RUN apt-get update && \
-    apt-get install -y vim build-essential libpq-dev python3-dev \
-			unixodbc-dev python3-pyodbc nodejs npm graphviz
+# Basic packages
+RUN apt-get update -q && apt-get install -y -qq vim build-essential && cd ~/ && \
+ wget https://raw.githubusercontent.com/andrespp/dotfiles/master/.vimrc-basic && \
+ mv .vimrc-basic .vimrc
 
 # Timezone and locale settings
 RUN rm /etc/localtime && \
     ln -s /usr/share/zoneinfo/America/Belem /etc/localtime && \
-    apt-get install -y locales && \
+    apt-get install -y -qq locales && \
     dpkg-reconfigure -f noninteractive tzdata && \
     sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
     sed -i -e 's/# pt_BR.UTF-8 UTF-8/pt_BR.UTF-8 UTF-8/' /etc/locale.gen && \
     echo 'LANG="en_US.UTF-8"'>/etc/default/locale && \
     dpkg-reconfigure --frontend=noninteractive locales && \
-    update-locale LANG=en_US.UTF-8 LC_MONETARY=pt_BR.UTF-8 && \
-    apt-get clean && rm -rf /var/lib/apt/list
+    update-locale LANG=en_US.UTF-8 LC_MONETARY=pt_BR.UTF-8
 
-# Aditional Packages
-RUN apt-get install -y  firebird-dev
+# Aditional packages
+RUN apt-get update -qq && \
+    apt-get -y -qq install unixodbc-dev python3-psycopg2 libpq-dev
 
-# Python Requrements
-COPY ./requirements.txt ./
-RUN pip install -r requirements.txt
+# Setup Conda Environment
+ARG CONDA_ENV_NAME=jlab
+COPY ./environment.yml ./
+RUN conda env create -q -f environment.yml
+RUN echo "source activate $CONDA_ENV_NAME" > ~/.bashrc
+ENV PATH /opt/conda/envs/$CONDA_ENV_NAME/bin:$PATH
 
 # Jupyterlab Extensions
-RUN pip install jupyterlab-git==0.11.0 && jupyter lab build
-RUN jupyter labextension install @jupyterlab/toc && \
-    jupyter labextension install @jupyterlab/github && \
-    jupyter labextension install jupyterlab-drawio && \
-    jupyter labextension install @jupyterlab/plotly-extension
+RUN \
+  pip install jupyterlab-git==0.44.0 && \
+  pip install jupyterlab-github==4.0.0
 
 WORKDIR /opt/app/data
 

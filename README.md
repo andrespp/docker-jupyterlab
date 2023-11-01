@@ -19,11 +19,8 @@ The additional packages installed on this image are listed on the file ([`requir
 
 This image also includes the 3rd-party extensions listed below:
 
-* [jupyterlab-drawio](https://github.com/QuantStack/jupyterlab-drawio): a JupyterLab extension for standalone integration of drawio / mxgraph into jupyterlab.
 * [jupyterlab-git](https://github.com/jupyterlab/jupyterlab-git): a JupyterLab extension for version control using Git.
 * [jupyterlab-github](https://github.com/jupyterlab/jupyterlab-github): a JupyterLab extension for accessing GitHub repositories.
-* [jupyterlab-plotly-extension](https://github.com/jupyterlab/jupyter-renderers/tree/master/packages/plotly-extension): A JupyterLab extension for rendering Plotly charts.
-* [jupyterlab-toc](https://github.com/jupyterlab/jupyterlab-toc): a Table of Contents extension for JupyterLab
 
 # Quick start
 
